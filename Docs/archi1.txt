@@ -1,0 +1,45 @@
+                               O     
+                              -|-  
+                              / \   
+                              User <- - - - - - - - - - - - - - .
+                              |  ^                              ;
+                      json    |  |                                     streaming
+                .-------------+  +-----------.                  ;  (protocol buffers)
+                |  https                wss  |                  
+                V request          handshake V                  ;
+  +-------------------------------------------------+           
+  |                      API                        |           ;
+  |                      REST                       |           
+  |              Creation, configuration            |           ;
+  |                   Commands                      |           
+  +-------------------------------------------------+           ;  Upgraded to
+        ^                                ;                          WebSocket
+        ;                                ;                      ;  connection 
+        ;                                ;                          with User 
+        V                                V                      ;
+  +--------------------+     +------------------+    .------.    
+  |                    |     |  Direct Contact  |    '------'   ;
+  |   Message broker   |<- ->|                  |<-->|      |   
+  |                    |     |     Service      |    '------'   ;
+  +--------------------+     +------------------+    In memory  
+       ^              ^                      ;        cache     ;
+       ;     ...      ;                      ;        Redis    
+       V              V                      ;                  ;
+  +-----------+      +-----------+           ;                 
+  |    ANN    |      |    ANN    |           ;                  ;
+  |   Micro   | ...  |   Micro   |<- - - - - +                 
+  |  Service  |      |  Service  |                              ;
+  |(Computing)|      |(Computing)|<- - - - - - - - - - - - - - -.
+  +-----------+      +-----------+          
+       ^                    ^ 
+       |                    |        Horizontal ANN computing   
+       V                    V           micro-service scaling.
+   .------.              .------.
+   '------'              '------'   
+   |      |              |      |
+   |      |              |      |
+   '------'              '------'
+   In memory            In memory
+     cache                cache
+     Redis                Redis
+
