@@ -1,0 +1,11 @@
+syntax = "proto3";
+package pb;
+
+message Learning {
+  // Id for the neural network used.
+  int32 idNN = 1;
+
+  repeated double outputs = 2;
+  repeated double weights = 3;
+
+}

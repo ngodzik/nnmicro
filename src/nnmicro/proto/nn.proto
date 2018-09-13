@@ -1,0 +1,13 @@
+syntax = "proto3";
+package pb;
+
+import "google/protobuf/timestamp.proto";
+
+message NeuralNetwork {
+  int32 id = 1;  // Unique ID number for this neural networks.
+
+  repeated int32 layer = 2;
+  repeated double weight = 3;
+
+  google.protobuf.Timestamp last_updated = 4;
+}
